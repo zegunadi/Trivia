@@ -1,12 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<h1>GEOGRAFIA</h1>
-	<h1>CIENCIA</h1>
-	<h1>HISTORIA</h1>
-	<h1>DEPORTE</h1>
 	{% for cat in categorias %}
-		<h1>{{cat}}</h1>
+		<a href="/trivia/{{cat.id}}/pregunta">{{cat.nombre}}</a><br>
 	{% endfor %}
 	<a  href="/">volver</a>
 {% endblock %}
