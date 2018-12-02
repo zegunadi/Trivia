@@ -1,9 +1,11 @@
+import sys
+from random import randint
 from flask import Flask, render_template
-from models.trivia import Categoria,Pregunta
+from models.trivia import Categoria,Pregunta,Respuesta
 from vo.categoriavo import CategoriaVO
-
+from vo.preguntavo import PreguntaVO
+from vo.repuestavo import RepuestaVO
 from flask_sqlalchemy import SQLAlchemy
-from random import random
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///models/trivia.db'
@@ -31,14 +33,39 @@ def trivia_categorias():
         to_return.append(vo)
     return render_template('comenzar.html',categorias=to_return)
 
-@app.route('/trivia/<int:categoria_id>/pregunta', methods=['GET'])
-def trivia_pregunta_por_categoria(categoria_id):
+@app.route('/trivia/<int:categoria>/pregunta', methods=['GET'])
+def trivia_pregunta_por_categoria(categoria):
     """muestra una pregunta asociada a una categoria"""
     
-    cantidad_preguntas = Pregunta.query.filter_by(categoria_id==categoria_id).count()
-    id_pregunta_elegida = random.randint(1,cantidad_preguntas)
-    to_return = []
-    for resp in Pregunta.query.filter_by(pregunta_id==id_pregunta_elegida) :
-        vo = CategoriaVO(cat.id,cat.name)
-        to_return.append(vo)
-    return render_template('comenzar.html',categorias=to_return)
+    cantidad_preguntas = Pregunta.query.filter_by(categoria_id=categoria).count()
+       
+    id_pregunta_elegida =randint(1,cantidad_preguntas)
+   
+    print('This is error output IDELEGIDA ' + str(id_pregunta_elegida), file=sys.stderr) 
+    pregunta = Pregunta.query.get(id_pregunta_elegida)
+   
+    vopreg = PreguntaVO(pregunta.id,pregunta.texto,pregunta.categoria_id)
+    
+    for resp in Respuesta.query.filter_by(pregunta_id=id_pregunta_elegida) :
+        voresp = RepuestaVO(resp.id,resp.texto,resp.es_correcta,resp.pregunta_id)
+        vopreg.add_repuesta(voresp)
+    return render_template('pregunta.html',pregunta=vopreg)
+
+@app.route('/trivia/{<int:idpregunta>}/resultado/{<int:idrespuesta>}', methods=['GET'])
+def trivia_validar_pregunta(idpregunta,idrespuesta):
+    
+    respuesta = Respuesta.query.get(idrespuesta) 
+    pregunta = Pregunta.query.get(idpregunta)
+    
+    vopreg = PreguntaVO(pregunta.id,pregunta.texto,pregunta.categoria_id)
+    
+    for resp in Respuesta.query.filter_by(pregunta_id=idpregunta):
+        voresp = RepuestaVO(resp.id,resp.texto,resp.es_correcta,resp.pregunta_id)
+        vopreg.add_repuesta(voresp)
+    
+    if respuesta.es_correcta:
+        vopreg.add_resultado("Repuesta Correcta")
+    else:
+        vopreg.add_resultado("Repuesta Incorrecta")
+    
+    return render_template('resultado.html',pregunta=vopreg)  

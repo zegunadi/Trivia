@@ -47,7 +47,7 @@ p_c_historia_5 = Pregunta(texto="¿Cuál de los siguientes presidentes no fue el
 p_c_deporte_1 = Pregunta(texto="¿En qué país se hizo el mundial de fútbol del 2010?", categoria_id=c_deporte.id)
 p_c_deporte_2 = Pregunta(texto="¿Cuántos jugadores componen un equipo de rugby?", categoria_id=c_deporte.id)
 p_c_deporte_3 = Pregunta(texto="¿Con qué apodo es conocido Enzo Francescoli?", categoria_id=c_deporte.id)
-p_c_deporte_4 = Pregunta(texto="¿Con cuál de los siguientes deportes Uruguay no obtuvo una medalla olimpica?", categoria_id=c_historia.id)
+p_c_deporte_4 = Pregunta(texto="¿Con cuál de los siguientes deportes Uruguay no obtuvo una medalla olimpica?", categoria_id=c_deporte.id)
 p_c_deporte_5 = Pregunta(texto="¿En qué deporte se destacaron César Bernal y Néstor Iroldi?", categoria_id=c_deporte.id)
 
 
@@ -56,7 +56,7 @@ p_c_deporte_5 = Pregunta(texto="¿En qué deporte se destacaron César Bernal y 
 p_c_arte_1 = Pregunta(texto="Cuál de los siguientes escritores uruguayos ganó el premio Cervantes?", categoria_id=c_arte.id)
 p_c_arte_2 = Pregunta(texto="¿Cuál de los siguientes pintores es conocido como el pintor de la patria?", categoria_id=c_arte.id)
 p_c_arte_3 = Pregunta(texto="¿De quién es la obra América invertida?", categoria_id=c_arte.id)
-p_c_arte_4 = Pregunta(texto="¿Quién creó al sapo Ruperto?", categoria_id=c_historia.id)
+p_c_arte_4 = Pregunta(texto="¿Quién creó al sapo Ruperto?", categoria_id=c_arte.id)
 p_c_arte_5 = Pregunta(texto="¿Quién pintó El juramento de los Treinta y Tres Orientales?", categoria_id=c_arte.id)
 
 
@@ -65,7 +65,7 @@ p_c_arte_5 = Pregunta(texto="¿Quién pintó El juramento de los Treinta y Tres 
 p_c_ciencia_1 = Pregunta(texto="¿Qué son las várices?", categoria_id=c_ciencia.id)
 p_c_ciencia_2 = Pregunta(texto="¿Cuáles son los huesos del oído?", categoria_id=c_ciencia.id)
 p_c_ciencia_3 = Pregunta(texto="¿Cuál es el símbolo químico del oro?", categoria_id=c_ciencia.id)
-p_c_ciencia_4 = Pregunta(texto="¿Cuál es la función de la insulina en la sangre?", categoria_id=c_historia.id)
+p_c_ciencia_4 = Pregunta(texto="¿Cuál es la función de la insulina en la sangre?", categoria_id=c_ciencia.id)
 p_c_ciencia_5 = Pregunta(texto="¿Qué registra un sismógrafo?", categoria_id=c_ciencia.id)
 
 #preguntas categoria entretenimiento
@@ -73,7 +73,7 @@ p_c_ciencia_5 = Pregunta(texto="¿Qué registra un sismógrafo?", categoria_id=c
 p_c_entre_1 = Pregunta(texto="¿Qué película de Disney trata sobre un perro que cree tener superpoderes?", categoria_id=c_entre.id)
 p_c_entre_2 = Pregunta(texto="¿A qué película de Disney pertenece la canción Hakuna Matata?", categoria_id=c_entre.id)
 p_c_entre_3 = Pregunta(texto="¿Cuál es el motivo por el que Peter Parker se convirtió en Spider-Man?", categoria_id=c_entre.id)
-p_c_entre_4 = Pregunta(texto="En la película La era del hielo, ¿qué personaje es Manny?", categoria_id=c_historia.id)
+p_c_entre_4 = Pregunta(texto="En la película La era del hielo, ¿qué personaje es Manny?", categoria_id=c_entre.id)
 p_c_entre_5 = Pregunta(texto="¿Cómo se llama la canción escrita por Sakira para el Mundial del 2010?", categoria_id=c_entre.id)
 
 

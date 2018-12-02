@@ -5,3 +5,4 @@ class RepuestaVO:
         self.texto=texto
         self.es_correcta=es_correcta
         self.id_pregunta=id_pregunta
+  

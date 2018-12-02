@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1>¡{{resultado.resultado}}!</h1><br>
+	{% for resp in repuestas %}
+		{% if resp.es_correcta %}
+			<strong>{{resp.texto}}</strong>
+		{% else %}
+			{{resp.texto}}	
+		{% endif %}
+		<a href="/trivia/{{resp.id_pregunta}}/resultado/{{resp.id}}">{{resp.texto}}</a><br>
+	{% endfor %}
+	<h1><a  href="/trivia/categorias">volver</a></h1>
+{% endblock %}
