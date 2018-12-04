@@ -37,14 +37,13 @@ def trivia_categorias():
 def trivia_pregunta_por_categoria(categoria):
     """muestra una pregunta asociada a una categoria"""
     
-   # cantidad_preguntas = Pregunta.query.filter_by(categoria_id=categoria).count()
-    preguntas = Pregunta.query.filter_by(categoria_id=categoria).all()   
-    preguntas
-    cantidad_preguntas = preguntas.size()
-    id_pregunta_elegida =randint(1,cantidad_preguntas)
+    cantidad_preguntas = Pregunta.query.filter_by(categoria_id=categoria).count()
+    preguntas = Pregunta.query.filter_by(categoria_id=categoria).order_by(Pregunta.id)
    
+    print('This is error output GERA ' + str(preguntas[0].id), file=sys.stderr) 
+    id_pregunta_elegida =randint(preguntas[0].id,preguntas[0].id + cantidad_preguntas)
     print('This is error output IDELEGIDA ' + str(id_pregunta_elegida), file=sys.stderr) 
-    pregunta = Pregunta.query.get(categoria*id_pregunta_elegida)
+    pregunta = Pregunta.query.get(id_pregunta_elegida)
    
     vopreg = PreguntaVO(pregunta.id,pregunta.texto,pregunta.categoria_id)
     
@@ -53,7 +52,7 @@ def trivia_pregunta_por_categoria(categoria):
         vopreg.add_repuesta(voresp)
     return render_template('pregunta.html',pregunta=vopreg)
 
-@app.route('/trivia/{<int:idpregunta>}/resultado/{<int:idrespuesta>}', methods=['GET'])
+@app.route('/trivia/<int:idpregunta>/resultado/<int:idrespuesta>', methods=['GET'])
 def trivia_validar_pregunta(idpregunta,idrespuesta):
     
     respuesta = Respuesta.query.get(idrespuesta) 
