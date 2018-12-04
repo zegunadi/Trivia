@@ -37,12 +37,14 @@ def trivia_categorias():
 def trivia_pregunta_por_categoria(categoria):
     """muestra una pregunta asociada a una categoria"""
     
-    cantidad_preguntas = Pregunta.query.filter_by(categoria_id=categoria).count()
-       
+   # cantidad_preguntas = Pregunta.query.filter_by(categoria_id=categoria).count()
+    preguntas = Pregunta.query.filter_by(categoria_id=categoria).all()   
+    preguntas
+    cantidad_preguntas = preguntas.size()
     id_pregunta_elegida =randint(1,cantidad_preguntas)
    
     print('This is error output IDELEGIDA ' + str(id_pregunta_elegida), file=sys.stderr) 
-    pregunta = Pregunta.query.get(id_pregunta_elegida)
+    pregunta = Pregunta.query.get(categoria*id_pregunta_elegida)
    
     vopreg = PreguntaVO(pregunta.id,pregunta.texto,pregunta.categoria_id)
     
