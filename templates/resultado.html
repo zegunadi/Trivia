@@ -4,11 +4,10 @@
 	<h1>{{pregunta.resultado}}</h1><br>
 	{% for resp in pregunta.repuestas %}
 		{% if resp.es_correcta %}
-			<strong>{{resp.texto}}</strong>
+			<strong><a href="/trivia/{{resp.id_pregunta}}/resultado/{{resp.id}}">{{resp.texto}}</a><br></strong>
 		{% else %}
-			{{resp.texto}}	
+			<a href="/trivia/{{resp.id_pregunta}}/resultado/{{resp.id}}">{{resp.texto}}</a><br>
 		{% endif %}
-		<a href="/trivia/{{resp.id_pregunta}}/resultado/{{resp.id}}">{{resp.texto}}</a><br>
 	{% endfor %}
 	<h1><a  href="/trivia/categorias">volver</a></h1>
 {% endblock %}

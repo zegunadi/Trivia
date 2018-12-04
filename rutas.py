@@ -59,7 +59,6 @@ def trivia_validar_pregunta(idpregunta,idrespuesta):
     pregunta = Pregunta.query.get(idpregunta)
     
     vopreg = PreguntaVO(pregunta.id,pregunta.texto,pregunta.categoria_id)
-    
     for resp in Respuesta.query.filter_by(pregunta_id=idpregunta):
         voresp = RepuestaVO(resp.id,resp.texto,resp.es_correcta,resp.pregunta_id)
         vopreg.add_repuesta(voresp)
