@@ -1,13 +1,16 @@
 import sys
 from random import randint
-from flask import Flask, render_template
+from flask import Flask, render_template, session
 from models.trivia import Categoria,Pregunta,Respuesta
 from vo.categoriavo import CategoriaVO
 from vo.preguntavo import PreguntaVO
 from vo.repuestavo import RepuestaVO
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 app = Flask(__name__)
+app.secret_key = 'No te lo voy a decir'
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///models/trivia.db'
 
 db = SQLAlchemy(app)
@@ -26,11 +29,24 @@ def comenzar():
 
 @app.route('/trivia/categorias', methods=['GET'])
 def trivia_categorias():
-    """muestra todas las categorias"""
+    """muestra todas las categorias""" 
+    categ = Categoria.query.all()
+    if (session['usuario'] is None):
+        session['usuario']='trivia'
+        session['inicio']= datetime.now()
     to_return = []
-    for cat in Categoria.query.all():
-        vo = CategoriaVO(cat.id,cat.name)
-        to_return.append(vo)
+    for cat in categ:
+        if (session['usuario'] is None):
+            session[cat.id]= True
+            vo = CategoriaVO(cat.id,cat.name,True)
+        else:
+            if session[cat.id] :
+                vo = CategoriaVO(cat.id,cat.name,True)
+            else:
+                """ Ya respondio de forma acertada """
+                vo = CategoriaVO(cat.id,cat.name,False)
+        
+    to_return.append(vo)
     return render_template('comenzar.html',categorias=to_return)
 
 @app.route('/trivia/<int:categoria>/pregunta', methods=['GET'])
@@ -68,4 +84,24 @@ def trivia_validar_pregunta(idpregunta,idrespuesta):
     else:
         vopreg.add_resultado("Repuesta Incorrecta")
     
-    return render_template('resultado.html',pregunta=vopreg)  
+    return render_template('resultado.html',pregunta=vopreg,fin=eselfin())  
+
+@app.route('/trivia/fin', methods=['GET'])
+def trivia_fin():
+    session.pop('usuario', None)
+    time = datetime.now() - session['inicio']
+    session.pop('inicio',None)
+    for cat in Categoria.query.all():
+        session.pop(str(cat.id),None)
+    session.pop()
+    
+    return render_template('fin.html',tiempo=time) 
+
+def eselfin():
+    salida = True
+    categ = Categoria.query.all()
+    for cat in categ: 
+        if not session[cat.id]:
+            salida = False
+            break
+    return salida 

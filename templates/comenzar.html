@@ -2,7 +2,12 @@
 
 {% block content %}
 	{% for cat in categorias %}
-		<a href="/trivia/{{cat.id}}/pregunta">{{cat.nombre}}</a><br>
+		{% if cat.visible %}
+			<a href="/trivia/{{cat.id}}/pregunta">{{cat.nombre}}</a><br>
+		{% else %}
+			
+		{% endif %}
+			{{cat.nombre}}
 	{% endfor %}
-	<h1><a  href="/">volver</a></h1>
+	<h2><a  href="/">Volver</a></h2>
 {% endblock %}

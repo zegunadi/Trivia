@@ -9,5 +9,9 @@
 			<a href="/trivia/{{resp.id_pregunta}}/resultado/{{resp.id}}">{{resp.texto}}</a><br>
 		{% endif %}
 	{% endfor %}
-	<h1><a  href="/trivia/categorias">volver</a></h1>
+	{% if fin %}
+		<h2><a  href="/trivia/categorias">Volver</a></h2>
+	{% else %}
+		<h2><a  href="/trivia/fin">Fin</a></h2>
+	{% endif %}
 {% endblock %}
