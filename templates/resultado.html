@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-
-{% block content %}
+{% block title %}{% endblock %}
+{% block body %}
 	<h1>{{pregunta.resultado}}</h1><br>
 	{% for resp in pregunta.repuestas %}
 		{% if resp.es_correcta %}
@@ -9,7 +9,7 @@
 			<a href="/trivia/{{resp.id_pregunta}}/resultado/{{resp.id}}">{{resp.texto}}</a><br>
 		{% endif %}
 	{% endfor %}
-	{% if fin %}
+	{% if not fin %}
 		<h2><a  href="/trivia/categorias">Volver</a></h2>
 	{% else %}
 		<h2><a  href="/trivia/fin">Fin</a></h2>

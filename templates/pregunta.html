@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-
-{% block content %}
+{% block title %}{% endblock %}
+{% block body %}
 	<h1>{{pregunta.texto}}</h1><br>
 	{% for resp in pregunta.repuestas %}
 		<a href="/trivia/{{resp.id_pregunta}}/resultado/{{resp.id}}">{{resp.texto}}</a><br>

@@ -1,14 +1,21 @@
 {% extends "base.html" %}
 
-{% block content %}
-	<h1>Bienvenido a La Trivia!!!</h1>
-	<h2>
-	<p>Te mostraremos una pregunta de cada categor&iacute;a, con difrentes respuestas, donde una sola es la correcta.
-	Luego que seleeciones la respuesta correcta, podr&aacute;s elegir otra categor&iacute;a.
-	El juego finaliza cuando hayas contestado de forma correcta una pregunta de cada categor&iacute;a</p>
-	
-	
-	<a  href="/trivia/categorias">Comenzar</a></h2>
-	
-	
+{% block head %}
+	{{ super() }}
+	<style type=text/css>
+	    h1 { margin: 0 0 30px 0; background: url({{ url_for('static', filename='logo.png') }}) no-repeat center; height: 560px; }
+	    h1 span, p.tagline { display: none; }
+  	</style>
+{% endblock %}
+{% block title %}Bienvenido a la Trivia{% endblock %}
+{% block body %}
+	<p>Te mostraremos una pregunta de cada categor&iacute;a, con 
+	   difrentes respuestas, donde una sola es la correcta.
+	   Luego que seleeciones la respuesta correcta, 
+	   podr&aacute;s elegir otra categor&iacute;a.
+	   El juego finaliza cuando hayas contestado 
+	   de forma correcta una pregunta de cada categor&iacute;a.<br>
+{% endblock %}
+{% block link %}	
+	<a  href="/trivia/categorias">Comenzar</a>
 {% endblock %}

@@ -1,13 +1,13 @@
 {% extends "base.html" %}
-
-{% block content %}
+{% block title %}Categorias{% endblock %}
+{% block body %}
 	{% for cat in categorias %}
 		{% if cat.visible %}
 			<a href="/trivia/{{cat.id}}/pregunta">{{cat.nombre}}</a><br>
 		{% else %}
-			
+			{{cat.nombre}}<br>
 		{% endif %}
-			{{cat.nombre}}
+			
 	{% endfor %}
 	<h2><a  href="/">Volver</a></h2>
 {% endblock %}

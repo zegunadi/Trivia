@@ -21,44 +21,38 @@ def hello():
 
 @app.route('/', methods=['GET'])
 def inicio():
+    init()
     return render_template('inicio.html')
 
 @app.route('/comenzar', methods=['GET'])
 def comenzar():
+   
     return render_template('comenzar.html')
 
 @app.route('/trivia/categorias', methods=['GET'])
 def trivia_categorias():
     """muestra todas las categorias""" 
-    categ = Categoria.query.all()
-    if (session['usuario'] is None):
-        session['usuario']='trivia'
-        session['inicio']= datetime.now()
+    if not 'usuario' in session:
+        init()
     to_return = []
-    for cat in categ:
-        if (session['usuario'] is None):
-            session[cat.id]= True
-            vo = CategoriaVO(cat.id,cat.name,True)
-        else:
-            if session[cat.id] :
-                vo = CategoriaVO(cat.id,cat.name,True)
-            else:
-                """ Ya respondio de forma acertada """
-                vo = CategoriaVO(cat.id,cat.name,False)
-        
-    to_return.append(vo)
+    for cat in Categoria.query.all():
+        vo = CategoriaVO(cat.id,cat.name,session[str(cat.id)])
+        to_return.append(vo)
     return render_template('comenzar.html',categorias=to_return)
 
 @app.route('/trivia/<int:categoria>/pregunta', methods=['GET'])
 def trivia_pregunta_por_categoria(categoria):
     """muestra una pregunta asociada a una categoria"""
     
+    print('Categoria seleccionada : ' + str(categoria), file=sys.stderr) 
     cantidad_preguntas = Pregunta.query.filter_by(categoria_id=categoria).count()
+    print('Categoria cantidad : ' + str(cantidad_preguntas), file=sys.stderr) 
     preguntas = Pregunta.query.filter_by(categoria_id=categoria).order_by(Pregunta.id)
-   
-    print('This is error output GERA ' + str(preguntas[0].id), file=sys.stderr) 
-    id_pregunta_elegida =randint(preguntas[0].id,preguntas[0].id + cantidad_preguntas)
-    print('This is error output IDELEGIDA ' + str(id_pregunta_elegida), file=sys.stderr) 
+    for preg in preguntas :
+        print('Pregunta : ' + preg.texto , file=sys.stderr) 
+    
+    id_pregunta_elegida =randint(preguntas[0].id,preguntas[0].id + cantidad_preguntas-1)
+    print('IDELEGIDA ' + str(id_pregunta_elegida), file=sys.stderr) 
     pregunta = Pregunta.query.get(id_pregunta_elegida)
    
     vopreg = PreguntaVO(pregunta.id,pregunta.texto,pregunta.categoria_id)
@@ -81,6 +75,7 @@ def trivia_validar_pregunta(idpregunta,idrespuesta):
     
     if respuesta.es_correcta:
         vopreg.add_resultado("Repuesta Correcta")
+        session[str(pregunta.categoria_id)]=False
     else:
         vopreg.add_resultado("Repuesta Incorrecta")
     
@@ -93,15 +88,20 @@ def trivia_fin():
     session.pop('inicio',None)
     for cat in Categoria.query.all():
         session.pop(str(cat.id),None)
-    session.pop()
     
     return render_template('fin.html',tiempo=time) 
 
+def init():
+    categ = Categoria.query.all()
+    session['usuario']='trivia'
+    session['inicio']= datetime.now()
+    for cat in categ:  
+        session[str(cat.id)]= True
+
 def eselfin():
     salida = True
-    categ = Categoria.query.all()
-    for cat in categ: 
-        if not session[cat.id]:
+    for cat in Categoria.query.all(): 
+        if session[str(cat.id)]:
             salida = False
             break
     return salida 

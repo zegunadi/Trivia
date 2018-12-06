@@ -1,0 +1,6 @@
+body         { font-family: 'Georgia', serif; font-size: 17px; color: #000; }
+.box         { width: 775px; margin: 40px auto; }
+.footer      { font-size: 13px; color: #888; text-align: right; margin-top: 25px; }
+h2           { font-size: 30px; margin: 15px 0 5px 0; }
+a            { font-size: 20px; margin: 15px 0 5px 0; color: #004B6B; }
+p			 { line-height: 1.4; }
