@@ -1,9 +1,10 @@
 {% extends "base.html" %}
-{% block title %}{% endblock %}
 {% block body %}
 	<h1>{{pregunta.texto}}</h1><br>
 	{% for resp in pregunta.repuestas %}
 		<a href="/trivia/{{resp.id_pregunta}}/resultado/{{resp.id}}">{{resp.texto}}</a><br>
 	{% endfor %}
-	<h2><a  href="/trivia/categorias">Volver</a></h2>
+{% endblock %}
+{% block link %}	
+	<h3><a  href="/trivia/categorias">Volver</a></h3>
 {% endblock %}

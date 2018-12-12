@@ -1,13 +1,17 @@
 {% extends "base.html" %}
-{% block title %}Categorias{% endblock %}
+{% block head %}
+	{{ super() }}
+	<img src="static/logo.png" class="box" />
+{% endblock %}
 {% block body %}
 	{% for cat in categorias %}
 		{% if cat.visible %}
-			<a href="/trivia/{{cat.id}}/pregunta">{{cat.nombre}}</a><br>
+			<p><a href="/trivia/{{cat.id}}/pregunta">{{cat.nombre}}</a></p>
 		{% else %}
 			{{cat.nombre}}<br>
-		{% endif %}
-			
+		{% endif %}			
 	{% endfor %}
-	<h2><a  href="/">Volver</a></h2>
+{% endblock %}
+{% block link %}
+	<h3><a href="/">Volver</a></h3>
 {% endblock %}

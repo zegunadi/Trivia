@@ -5,14 +5,10 @@
 		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 		<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 	{% endblock %}
-	<div class=box>
-		{% block body_title %}
-			 <h1><span>{{ self.title() }}</span></h1>			
-		{% endblock %}
-		{% block body %}
-		{% endblock %}
-		{% block link %}	
-		{% endblock %}
-		<p class=footer>
-    		&copy; Copyright 2018 - {{ current_year }} by Gerardo & Diego</a>
+	{% block body %}
+	{% endblock %}
+	{% block link %}	
+	{% endblock %}
+	<p class=footer>
+    	&copy; Copyright 2018 - {{ current_year }} by Gerardo & Diego</a>
 	</div>
