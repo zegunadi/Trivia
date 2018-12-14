@@ -1,6 +1,7 @@
 import sys
 from random import randint
 from flask import Flask, render_template, session
+from flask_images import resized_img_src
 from models.trivia import Categoria,Pregunta,Respuesta
 from vo.categoriavo import CategoriaVO
 from vo.preguntavo import PreguntaVO
@@ -8,11 +9,9 @@ from vo.repuestavo import RepuestaVO
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 app.secret_key = 'No te lo voy a decir'
-
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///models/trivia.db'
-
 db = SQLAlchemy(app)
 
 @app.route('/hello', methods=['GET'])

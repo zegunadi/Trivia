@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
 {% block head %}
-	{{ super() }}
-	<img src="static/logo.png" class="box" />
+	{{ super() }}	
+	<img src="{{url_for('static',filename='logo.png')}}" class="box" />
 {% endblock %}
 {% block body %}
 	<h1>Bienvenido a la Trivia</h1>
@@ -14,5 +14,5 @@
 	   de forma correcta una pregunta de cada categor&iacute;a.</p>
 {% endblock %}
 {% block link %}	
-	<h3><a  href="/trivia/categorias">Comenzar</a></h3>
+	<a  href="/trivia/categorias">Comenzar</a>
 {% endblock %}

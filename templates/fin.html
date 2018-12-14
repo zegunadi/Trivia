@@ -1,8 +1,12 @@
 {% extends "base.html" %}
+{% block head %}
+	{{ super() }}
+	<img src="{{url_for('static',filename='logobanner.png',quality=95)}}"/>	
+{% endblock %}
 {% block body %}
-	<h1>FELICITACIONES HAS GANADO!!!</h1>
-	<h2>Tu tiempo fue {{tiempo}}</h2>
+	<p><h1>FELICITACIONES HAS GANADO!!!</h1>
+	<h2>Tu tiempo fue {{tiempo}}</h2></p>
 {% endblock %}
 {% block link %}
-	<h3><a  href="/">Inicio</a></h3>
+	<a  href="/">Inicio</a>
 {% endblock %}

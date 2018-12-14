@@ -1,20 +1,23 @@
 {% extends "base.html" %}
-{% block title %}{% endblock %}
+{% block head %}
+	{{ super() }}
+	<img src="{{url_for('static',filename='logobanner.png',quality=95)}}"/>	
+{% endblock %}
 {% block body %}
 	<h1>{{pregunta.resultado}}</h1><br>
 	{% for resp in pregunta.repuestas %}
 		{% if resp.es_correcta %}
-			<strong><a href="/trivia/{{resp.id_pregunta}}/resultado/{{resp.id}}">{{resp.texto}}</a><br></strong>
+			<p><strong><a href="/trivia/{{resp.id_pregunta}}/resultado/{{resp.id}}" class="anoline">{{resp.texto}}</a><br></strong></p>
 		{% else %}
-			<a href="/trivia/{{resp.id_pregunta}}/resultado/{{resp.id}}">{{resp.texto}}</a><br>
+			<p><a href="/trivia/{{resp.id_pregunta}}/resultado/{{resp.id}}" class="anoline">{{resp.texto}}</a><br></p>
 		{% endif %}
 	{% endfor %}
 
 {% endblock %}
 {% block link %}
 	{% if not fin %}
-		<h3><a href="/trivia/categorias">Volver</a></h3>
+		<a href="/trivia/categorias">Volver</a>
 	{% else %}
-		<h3><a href="/trivia/fin">Fin</a></h3>
+		<a href="/trivia/fin">Fin</a>
 	{% endif %}
 {% endblock %}
