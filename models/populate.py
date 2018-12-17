@@ -74,7 +74,7 @@ p_c_entre_1 = Pregunta(texto="¿Qué película de Disney trata sobre un perro qu
 p_c_entre_2 = Pregunta(texto="¿A qué película de Disney pertenece la canción Hakuna Matata?", categoria_id=c_entre.id)
 p_c_entre_3 = Pregunta(texto="¿Cuál es el motivo por el que Peter Parker se convirtió en Spider-Man?", categoria_id=c_entre.id)
 p_c_entre_4 = Pregunta(texto="En la película La era del hielo, ¿qué personaje es Manny?", categoria_id=c_entre.id)
-p_c_entre_5 = Pregunta(texto="¿Cómo se llama la canción escrita por Sakira para el Mundial del 2010?", categoria_id=c_entre.id)
+p_c_entre_5 = Pregunta(texto="¿Cómo se llama la canción escrita por Shakira para el Mundial del 2010?", categoria_id=c_entre.id)
 
 
 db.session.add(p_c_geogra_1)

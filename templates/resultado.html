@@ -9,7 +9,11 @@
 		{% if resp.es_correcta %}
 			<p><strong><a href="/trivia/{{resp.id_pregunta}}/resultado/{{resp.id}}" class="anoline">{{resp.texto}}</a><br></strong></p>
 		{% else %}
-			<p><a href="/trivia/{{resp.id_pregunta}}/resultado/{{resp.id}}" class="anoline">{{resp.texto}}</a><br></p>
+			{% if respondido == resp.id %}
+				<p><a href="/trivia/{{resp.id_pregunta}}/resultado/{{resp.id}}" class="anolinerojo">{{resp.texto}}</a><br></p>
+			{% else %}
+				<p><a href="/trivia/{{resp.id_pregunta}}/resultado/{{resp.id}}" class="anoline">{{resp.texto}}</a><br></p>
+			{% endif %}
 		{% endif %}
 	{% endfor %}
 

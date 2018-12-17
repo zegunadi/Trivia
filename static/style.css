@@ -4,9 +4,10 @@ body 		 {max-width: 960px; margin: 0 auto;}
 .footer		 {font-size: 13px; color: #888; text-align: right; margin-top: 25px;}
 h1           {font-family: serif; font-size: 36px; color: #377ba8; margin: 1rem 0;}
 h2			 {font-family: serif; font-size: 30px; color: #377ba8; margin: 1rem 0;}
-h3			 {font-family: serif; font-size: 25px; color: #377ba8; margin: 1rem 0;}
+h3			 {font-family: serif; font-size: 25px; color: #808080; margin: 1rem 0;}
 p			 { line-height: 1.4;}
 a            {font-family: serif; color: #004B6B;font-size: 25px; margin: 1rem 0;}
-.anoline     {font-family: serif; color: #004B6B;font-size: 25px; margin: 1rem 0;text-decoration:none}
+.anoline     {font-family: serif; color: #004B6B;font-size: 25px; margin: 1rem 0;text-decoration:none;}
+.anolinerojo {font-family: serif; color: #ff0000;font-size: 25px; margin: 1rem 0;text-decoration:none;}
 
 

@@ -1,13 +1,13 @@
 import sys
 from random import randint
 from flask import Flask, render_template, session
-from flask_images import resized_img_src
 from models.trivia import Categoria,Pregunta,Respuesta
 from vo.categoriavo import CategoriaVO
 from vo.preguntavo import PreguntaVO
 from vo.repuestavo import RepuestaVO
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+ 
 
 app = Flask(__name__, static_folder='static')
 app.secret_key = 'No te lo voy a decir'
@@ -24,8 +24,7 @@ def inicio():
     return render_template('inicio.html')
 
 @app.route('/comenzar', methods=['GET'])
-def comenzar():
-   
+def comenzar():   
     return render_template('comenzar.html')
 
 @app.route('/trivia/categorias', methods=['GET'])
@@ -78,22 +77,29 @@ def trivia_validar_pregunta(idpregunta,idrespuesta):
     else:
         vopreg.add_resultado("Repuesta Incorrecta")
     
-    return render_template('resultado.html',pregunta=vopreg,fin=eselfin())  
+    return render_template('resultado.html',pregunta=vopreg,fin=eselfin(),respondido=idrespuesta)  
 
 @app.route('/trivia/fin', methods=['GET'])
 def trivia_fin():
     session.pop('usuario', None)
     time = datetime.now() - session['inicio']
+    prueba = datetime.now() - session['inicio2']
+    print('TIEMPO2 FINAL' + str( datetime.now().microsecond), file=sys.stderr)
+    print('TIEMPO2 FIN' + str(prueba), file=sys.stderr) 
+    
     session.pop('inicio',None)
     for cat in Categoria.query.all():
         session.pop(str(cat.id),None)
     
-    return render_template('fin.html',tiempo=time) 
+    return render_template('fin.html',tiempo=time,tiempo2=prueba) 
 
 def init():
     categ = Categoria.query.all()
     session['usuario']='trivia'
     session['inicio']= datetime.now()
+    session['inicio2']= datetime.now().microsecond
+    print('TIEMPO2 ' + str(datetime.now().microsecond), file=sys.stderr)
+    print('segundosssssssssss ' + str(datetime.now().second), file=sys.stderr) 
     for cat in categ:  
         session[str(cat.id)]= True
 

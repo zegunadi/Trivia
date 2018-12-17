@@ -8,7 +8,7 @@
 		{% if cat.visible %}
 			<p><a href="/trivia/{{cat.id}}/pregunta" class="anoline">{{cat.nombre}}</a></p>
 		{% else %}
-			<h2><p>{{cat.nombre}}</p></h2>
+			<h3><p>{{cat.nombre}}</p></h3>
 		{% endif %}			
 	{% endfor %}
 {% endblock %}
