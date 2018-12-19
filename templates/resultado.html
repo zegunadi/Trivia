@@ -7,12 +7,12 @@
 	<h1>{{pregunta.resultado}}</h1><br>
 	{% for resp in pregunta.repuestas %}
 		{% if resp.es_correcta %}
-			<p><strong><a href="/trivia/{{resp.id_pregunta}}/resultado/{{resp.id}}" class="anoline">{{resp.texto}}</a><br></strong></p>
+				<h6>{{resp.texto}}</h6><br>
 		{% else %}
 			{% if respondido == resp.id %}
-				<p><a href="/trivia/{{resp.id_pregunta}}/resultado/{{resp.id}}" class="anolinerojo">{{resp.texto}}</a><br></p>
+				<h5>{{resp.texto}}</h5><br>
 			{% else %}
-				<p><a href="/trivia/{{resp.id_pregunta}}/resultado/{{resp.id}}" class="anoline">{{resp.texto}}</a><br></p>
+				<h4>{{resp.texto}}</h4><br>
 			{% endif %}
 		{% endif %}
 	{% endfor %}

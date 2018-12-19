@@ -5,6 +5,9 @@ body 		 {max-width: 960px; margin: 0 auto;}
 h1           {font-family: serif; font-size: 36px; color: #377ba8; margin: 1rem 0;}
 h2			 {font-family: serif; font-size: 30px; color: #377ba8; margin: 1rem 0;}
 h3			 {font-family: serif; font-size: 25px; color: #808080; margin: 1rem 0;}
+h4			 {font-family: serif; font-size: 25px; color: #004B6B; margin: 1rem 0;}
+h5			 {font-family: serif; font-size: 25px; color: #ff0000; margin: 1rem 0;}
+h6			 {font-family: serif; font-size: 25px; color: #05a321; margin: 1rem 0;}
 p			 { line-height: 1.4;}
 a            {font-family: serif; color: #004B6B;font-size: 25px; margin: 1rem 0;}
 .anoline     {font-family: serif; color: #004B6B;font-size: 25px; margin: 1rem 0;text-decoration:none;}
