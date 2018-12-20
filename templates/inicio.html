@@ -1,17 +1,16 @@
 {% extends "base.html" %}
 
 {% block head %}
-	{{ super() }}	
-	<img src="{{url_for('static',filename='logo.png')}}" class="box" />
+	{{ super() }}
+	<center>	
+		<img src="{{url_for('static',filename='logo.png')}}" class="box" />
+	</center>
 {% endblock %}
 {% block body %}
 	<h1>Bienvenido a la Trivia</h1>
-	<p>Te mostraremos una pregunta de cada categor&iacute;a,<br> 
-	   con difrentes respuestas, donde una sola es la correcta.<br>
-	   Luego que seleeciones la respuesta correcta,<br> 
-	   podr&aacute;s elegir otra categor&iacute;a.<br>
-	   El juego finaliza cuando hayas contestado <br>
-	   de forma correcta una pregunta de cada categor&iacute;a.</p>
+	<p>Te mostraremos una pregunta de cada categor&iacute;a, con difrentes respuestas, donde una sola es la correcta.<br>
+	   Luego que seleeciones la respuesta correcta, podr&aacute;s elegir otra categor&iacute;a.<br>
+	   El juego finaliza cuando hayas contestado de forma correcta una pregunta de cada categor&iacute;a.</p>
 {% endblock %}
 {% block link %}	
 	<a  href="/trivia/categorias">Comenzar</a>
