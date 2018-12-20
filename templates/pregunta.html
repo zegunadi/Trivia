@@ -1,14 +1,21 @@
 {% extends "base.html" %}
 {% block head %}
 	{{ super() }}
-	<img src="{{url_for('static',filename='logobanner.png',quality=95)}}"/>	
+	<center>
+		<img src="{{url_for('static',filename='logobanner.png',quality=95)}}"/>
+	</center>	
 {% endblock %}
 {% block body %}
-	<h1>{{pregunta.texto}}</h1><br>
-	{% for resp in pregunta.repuestas %}
-		<p><a href="/trivia/{{resp.id_pregunta}}/resultado/{{resp.id}}" class="anoline">{{resp.texto}}</a><br></p>
-	{% endfor %}
+	<center>
+		<h1>{{pregunta.texto}}</h1><br>
+		{% for resp in pregunta.repuestas %}
+			<p><a href="/trivia/{{resp.id_pregunta}}/resultado/{{resp.id}}" class="anoline">{{resp.texto}}</a><br></p>
+		{% endfor %}
+	</center>
 {% endblock %}
-{% block link %}	
-	<a  href="/trivia/categorias">Volver</a>
+{% block link %}
+	<br> <br> 
+	<center>
+		<a  href="/trivia/categorias">Volver</a>
+	</center>
 {% endblock %}

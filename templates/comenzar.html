@@ -1,17 +1,24 @@
 {% extends "base.html" %}
 {% block head %}
 	{{ super() }}
-	<img src="{{url_for('static',filename='logobanner.png',quality=95)}}"/>	
+	<center>
+	<br>
+	<img src="{{url_for('static',filename='logo.png',quality=95)}}" width="400" height="250"/>
 {% endblock %}
 {% block body %}
+	<br>
 	{% for cat in categorias %}
 		{% if cat.visible %}
 			<p><a href="/trivia/{{cat.id}}/pregunta" class="anoline">{{cat.nombre}}</a></p>
 		{% else %}
-			<h3><p>{{cat.nombre}}</p></h3>
+			<h3>{{cat.nombre}}</h3>
 		{% endif %}			
 	{% endfor %}
 {% endblock %}
 {% block link %}
+	<br>
+	<br>
+	<br>
 	<a href="/">Volver</a>
+	</center>
 {% endblock %}

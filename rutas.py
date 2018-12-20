@@ -74,7 +74,7 @@ def trivia_validar_pregunta(idpregunta,idrespuesta):
         vopreg.add_repuesta(voresp)
     
     if respuesta.es_correcta:
-        vopreg.add_resultado("Repuesta Correcta")
+        vopreg.add_resultado("Repuesta Correcta!")
         session[str(pregunta.categoria_id)]=False
     else:
         vopreg.add_resultado("Repuesta Incorrecta")

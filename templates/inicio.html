@@ -2,7 +2,7 @@
 
 {% block head %}
 	{{ super() }}
-	<center>	
+	<center>
 		<img src="{{url_for('static',filename='logo.png')}}" class="box" />
 	</center>
 {% endblock %}
@@ -12,6 +12,7 @@
 	   Luego que seleeciones la respuesta correcta, podr&aacute;s elegir otra categor&iacute;a.<br>
 	   El juego finaliza cuando hayas contestado de forma correcta una pregunta de cada categor&iacute;a.</p>
 {% endblock %}
-{% block link %}	
-	<a  href="/trivia/categorias">Comenzar</a>
+{% block link %}
+	<br>	
+	<a href="/trivia/categorias">Comenzar</a>
 {% endblock %}
